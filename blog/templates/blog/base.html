@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'blog/main.css' %}">
+</head>
+<body >
+  
+<div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="na">
+       
+         <li> <a class="n" href="{% url 'glav' %}">Главная</a></li>
+
+
+          {% comment %} <a class="n" href="{% url 'home' %}">Ссылки</a> {% endcomment %}
+       
+    
+      <li><a href="{% url 'contacti' %}" class="btn btn-outline-secondary">Про нас</button>
+      </a></li>
+      {% if not user.is_authenticated %}
+   
+     
+      
+     <li> <a href="{% url 'reg' %}" class="btn btn-outline-warning">Регистрация</button>
+      </a></li>
+      <li><a href="{% url 'user' %}"  class="btn btn-outline-info">Войти</button>
+      </a></li>
+  
+      {% else %}
+      <li><a href="{% url 'url' %}" >Ссылки</button>
+      </a></li>
+      <li> <a href="{% url 'profile' %}"  class="btn btn-outline-warning">Профиль</button>
+      </a></li>
+    </ul>
+      {% comment %} <li> <a href="{% url 'exit' %}" class="ml-2">
+        <button class="btn btn-outline-info">Выйти</button>
+      </a></li> {% endcomment %}
+   
+
+    </div>
+      {% endif %}
+  </nav>
+<div class='nav'>
+    </div>
+  </nav>
+  
+  
+        {% if messages %}
+          {% for mess in messages %}
+
+            <div class="mess">{{ mess }}</div>
+          {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+      
+      
+</div>
+</body>
+</html>

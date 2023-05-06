@@ -1,0 +1,66 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+  <h1>      {{ title }}</h1>
+<div class="inner-header flex">
+  <!--Just the logo.. Don't mind this-->
+  <div>
+    <form method="post" enctype="multipart/form-data" class="form-register auth">
+      
+    {% csrf_token %}
+    {{ urlforme.as_p }}
+    <button class="custom-btn btn-6" type="submit"><span>Добавить</span></button>
+  
+      
+     
+
+    
+    
+    </form>
+    {% for post in news %}
+    <div>  </div>
+    {% if post.user == user %}
+    <p class='ssl'>Ссылка-<a href="{{post.long_link}}" target='_blank' class='pof'>link/{{ post.short_link}}/</a></p>              
+    {%endif%}
+    {%endfor%}
+    {% comment %} {% for post in news %}
+    {% if avtor == user %}
+    <div>
+    <p class='ssl'>Ссылка-<a href="{{ post.long_link}}" target='_blank' class='pof'>link/{{ post.short_link}}/</a></p>              
+    </div>
+    {%endif%}
+    {%endfor%} {% endcomment %}
+   
+    </div>
+</div>
+  
+  <!--Waves Container-->
+  <div>
+  <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+  <defs>
+  <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+  </defs>
+  <g class="parallax">
+  <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+  <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+  <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+  <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+  </g>
+  </svg>
+  </div>
+
+  
+  </div>
+
+
+    
+{% endblock %}
+
+

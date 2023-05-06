@@ -1,34 +1,32 @@
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wi)6farm7)+#w0=*htxc9l-%(ipotsj=k060+egh&q458=dtzk'
+SECRET_KEY = '+^3)9o$=&n+das@xj0kgj(vi*v-)y100)-wfjln%gya4o2mpxj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['itproger-django-blog.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'crispy_forms',
-    'users.apps.UsersConfig',
-    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +61,7 @@ WSGI_APPLICATION = 'itProger.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -74,7 +72,7 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -93,9 +91,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -105,26 +103,30 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
-MEDIA_URL = '/pictures/'
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'gdudar999@gmail.com'
-EMAIL_HOST_PASSWORD = 'example'
+EMAIL_HOST_USER = 'idmin.beka7@gmail.com'
+EMAIL_HOST_PASSWORD = 'xdutfhjdnmuzmwbe'
+STATIC_URL = '/static/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL='user'
 
-LOGIN_REDIRECT_URL = 'blog-home'
-LOGIN_URL = 'user'
+MEDIA_URL='/pictures/'
+MEDIA_ROOT= os.path.join(BASE_DIR,'pictures')
 
-django_heroku.settings(locals())
+
+
+
+
+
+
